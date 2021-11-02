@@ -2,11 +2,14 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import tasksRoutes from './routes/tasks.js';
 
 const app = express();
+
+app.use('/tasks', tasksRoutes);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors()); 3
+app.use(cors()); 3;
 
 const CONNECTION_URL = 'mongodb+srv://hugolfsimoes:hugolfsimoes123@cluster0.d305m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
