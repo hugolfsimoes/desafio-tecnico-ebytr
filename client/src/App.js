@@ -1,13 +1,19 @@
 import React from 'react';
 import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
+import Form from './components/Form';
+import Tasks from './components/Tasks';
 import logo from './images/logoEbytr.png';
+import useStyles from './styles';
+
+
 
 const App = () => {
+  const classes = useStyles();
   return (
     <Container maxWidth="lg">
-      <AppBar position="static" color="inherit">
-        <Typography variant="h2" align="center">Tasks</Typography>
-        <img src={ logo } alt="Logo da empresa Ebytr" height="60" />
+      <AppBar className={ classes.appBar } position="static" color="inherit">
+        <Typography className={ classes.heading } variant="h2" align="center">Tasks</Typography>
+        <img className={ classes.image } src={ logo } alt="Logo da empresa Ebytr" height="100" />
       </AppBar>
       <Grow in >
         <Container>
