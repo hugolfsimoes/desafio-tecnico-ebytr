@@ -10,6 +10,13 @@ export const getTasks = async (req, res) => {
   }
 };
 
-export const createTask = (req, res) => {
-  res.send('Task criada');
+export const createTask = async (req, res) => {
+  const task = req.body;
+  const newTask = TaskMessage(task);
+  try {
+    await newTask.save();
+    res.status(201).json(newTask);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
 };
