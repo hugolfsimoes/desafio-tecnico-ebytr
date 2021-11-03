@@ -6,18 +6,11 @@ const getAllTasks = async () => {
   return allTasks;
 };
 
-/* const taskSchema = mongoose.Schema({
-  title: String,
-  message: String,
-  creator: String,
-  tags: [String],
-  status: String,
-  createdAt: {
-    type: Date,
-    default: new Date()
-  }
-});
+const createTask = async ({ title, message, creator, tags, status }) => {
+  const db = await connection();
+  const newTask = await db.collection('tasks').insertOne({ title, message, creator, tags, status });
+  console.log(newTask);
+  return { task: { _id: newTask.insertedId, title, message, creator, tags, status } };
+};
 
-const TaskMessage = mongoose.model('TaskMessage', taskSchema); */
-
-module.exports = { getAllTasks };
+module.exports = { getAllTasks, createTask };

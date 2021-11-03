@@ -11,10 +11,9 @@ const getAllTasks = async (req, res) => {
 };
 
 const createTask = async (req, res) => {
-  const task = req.body;
-  const newTask = TaskMessage(task);
+  const { title, message, creator, tags, status } = req.body;
   try {
-    await newTask.save();
+    const newTask = await TasksService.createTask({ title, message, creator, tags, status });
     res.status(201).json(newTask);
   } catch (error) {
     res.status(409).json({ message: error.message });
