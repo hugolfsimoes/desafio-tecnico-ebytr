@@ -1,16 +1,16 @@
-import TaskMessage from '../models/tasks.model.js';
+const TasksService = require('../services/tasks.service');
 
-export const getTasks = async (req, res) => {
+const getAllTasks = async (req, res) => {
   try {
-    const taskMessages = await TaskMessage.find();
-    console.log(taskMessages);
-    res.status(200).json(taskMessages);
+    const allTasks = await TasksService.getAllTasks();
+    console.log(allTasks);
+    res.status(200).json(allTasks);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
 };
 
-export const createTask = async (req, res) => {
+const createTask = async (req, res) => {
   const task = req.body;
   const newTask = TaskMessage(task);
   try {
@@ -20,3 +20,5 @@ export const createTask = async (req, res) => {
     res.status(409).json({ message: error.message });
   }
 };
+
+module.exports = { getAllTasks, createTask };

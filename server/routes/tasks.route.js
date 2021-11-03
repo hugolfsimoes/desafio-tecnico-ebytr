@@ -1,8 +1,8 @@
-import express from 'express';
-import { getTasks, createTask } from '../controllers/tasks.controller.js';
+const express = require('express');
+const TasksController = require('../controllers/tasks.controller.js');
 const router = express.Router();
 
-router.get('/', getTasks);
-router.post('/', createTask);
+router.get('/', TasksController.getAllTasks);
+router.post('/', TasksController.createTask);
 
-export default router;
+module.exports = router;

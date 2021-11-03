@@ -1,6 +1,12 @@
-import mongoose from 'mongoose';
+const connection = require('./connection.js');
 
-const taskSchema = mongoose.Schema({
+const getAllTasks = async () => {
+  const db = await connection();
+  const allTasks = db.collection('tasks').find().toArray();
+  return allTasks;
+};
+
+/* const taskSchema = mongoose.Schema({
   title: String,
   message: String,
   creator: String,
@@ -12,6 +18,6 @@ const taskSchema = mongoose.Schema({
   }
 });
 
-const TaskMessage = mongoose.model('TaskMessage', taskSchema);
+const TaskMessage = mongoose.model('TaskMessage', taskSchema); */
 
-export default TaskMessage;
+module.exports = { getAllTasks };
