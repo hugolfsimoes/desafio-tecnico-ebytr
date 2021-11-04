@@ -1,4 +1,4 @@
-const fildIsEmpty = ({ title, message, creator, tags, status }) => {
+const fildIsEmpty = ({ title, message, creator, priority, status }) => {
   let error = '';
   switch (true) {
     case (!title):
@@ -16,8 +16,8 @@ const fildIsEmpty = ({ title, message, creator, tags, status }) => {
       error.code = 401;
       throw error;
 
-    case (!tags):
-      error = new Error('"tags" is required!');
+    case (!priority):
+      error = new Error('"priority" is required!');
       error.code = 401;
       throw error;
 
