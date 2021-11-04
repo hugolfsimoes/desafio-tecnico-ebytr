@@ -1,5 +1,6 @@
 #container {
   height: auto;
+  margin: 15px;
 }
 
 #header-tag {
@@ -11,7 +12,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 1px black solid;
+  background-color: white;
 }
 
 #logo-image {
@@ -25,22 +26,20 @@
 #content-container {
   display: flex;
   flex-direction: row;
-  border: black solid 1px;
   margin: 30px 0;
   border-radius: 15px;
   justify-content: space-between;
+  background-color: #1c9954;
 }
 
 #form-field {
   width: 25%;
   height: auto;
   margin-left: 15px;
-  border: black solid 1px;
 }
 
 #main-content {
   width: 80%;
   height: auto;
-  margin-left: 15px;
-  border: black solid 1px;
+  margin: 0 15px;
 }

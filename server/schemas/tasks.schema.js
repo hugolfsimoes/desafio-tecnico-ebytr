@@ -1,4 +1,4 @@
-const fildIsEmpty = ({ title, message, creator, priority, status }) => {
+const fildIsEmpty = ({ title, message, author, priority, status }) => {
   let error = '';
   switch (true) {
     case (!title):
@@ -11,8 +11,8 @@ const fildIsEmpty = ({ title, message, creator, priority, status }) => {
       error.code = 401;
       throw error;
 
-    case (!creator):
-      error = new Error('"creator" is required!');
+    case (!author):
+      error = new Error('"author" is required!');
       error.code = 401;
       throw error;
 
