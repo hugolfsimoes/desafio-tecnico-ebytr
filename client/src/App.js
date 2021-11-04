@@ -7,7 +7,7 @@ import * as api from './api';
 import logo from './images/logoEbytr.png';
 
 const App = () => {
-  const { state, setState } = useContext(dataContext);
+  const { state, setState, change } = useContext(dataContext);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -15,13 +15,15 @@ const App = () => {
       try {
         const { data } = await api.fetchTasks();
         setState(data);
+        console.log(data);
+        console.log(state);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
       }
     };
     getAllTasks();
-  }, []);
+  }, [change]);
 
 
   if (isLoading) return (<h1>Loading</h1>);
