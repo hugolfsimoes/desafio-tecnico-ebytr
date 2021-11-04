@@ -1,32 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import './App.css';
 import Board from './components/Board';
 import Form from './components/Form';
-import dataContext from './context/DataContext';
-import * as api from './api';
 import logo from './images/logoEbytr.png';
 
 const App = () => {
-  const { state, setState, change } = useContext(dataContext);
-  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const getAllTasks = async () => {
-      try {
-        const { data } = await api.fetchTasks();
-        setState(data);
-        console.log(data);
-        console.log(state);
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    getAllTasks();
-  }, [change]);
-
-
-  if (isLoading) return (<h1>Loading</h1>);
   return (
     <div id="container">
       <header id="header-tag">
