@@ -1,19 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './style.css';
 import PropTypes from 'prop-types';
 import redFlag from '../../images/redFlag.png';
 import greenFlag from '../../images/greenFlag.png';
 import yellowFlag from '../../images/yellowFlag.png';
 import moment from 'moment';
+import dataContext from '../../context/DataContext';
 
 export default function Task({ task }) {
+  const { setTaskEdit, setIsEditing } = useContext(dataContext);
   const { title, message, author, priority, status, createdAt } = task;
+
+
   let statusColor = '';
   if (status === 'Open') {
     statusColor = 'green';
   } else {
     statusColor = 'red';
   }
+
+  const handleEditTask = (task) => {
+    setTaskEdit(task);
+    setIsEditing(true);
+  };
   return (
     <div className="card-body">
       <ion-icon style={ { color: statusColor } } name="radio-button-on"></ion-icon>
@@ -31,7 +40,7 @@ export default function Task({ task }) {
       }
       <p id="created-tag" className="card-text">Created At: { moment(createdAt).fromNow() }</p>
       <button type="submit" className="btn btn-danger">Delete</button>
-      <button type="submit" className="btn btn-warning">Edit</button>
+      <button type="submit" className="btn btn-warning" onClick={ () => handleEditTask(task) }>Edit</button>
     </div>
   );
 }

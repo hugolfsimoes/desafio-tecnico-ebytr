@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './style.css';
 import * as api from '../../api';
 import dataContext from '../../context/DataContext';
@@ -6,7 +6,7 @@ import dataContext from '../../context/DataContext';
 
 export default function Form() {
 
-  const { change, setChange } = useContext(dataContext);
+  const { change, setChange, taskEdit, isEditing, setIsEditing } = useContext(dataContext);
   const [taskData, setTaskData] = useState({
     title: '', message: '', author: '', priority: 'High', status: 'Open'
   });
@@ -18,7 +18,14 @@ export default function Form() {
     await api.createTask(taskData);
     setTaskData({ title: '', message: '', author: '', priority: 'High', status: 'Open' });
     setChange(!change);
+    setIsEditing(false);
   };
+
+  useEffect(() => {
+    if (isEditing) {
+      setTaskData({ title: taskEdit.title, message: taskEdit.message, author: taskEdit.author, priority: taskEdit.priority, status: taskEdit.status });
+    }
+  }, [isEditing]);
 
   return (
     <form className="row g-3"
@@ -29,7 +36,7 @@ export default function Form() {
         display: 'flex',
         flexDirection: 'column'
       } }>
-      <h5>Create Task</h5>
+      { isEditing ? <h5>Edit Task</h5> : <h5>Create Task</h5> }
 
       <input className="form-control form-control-sm"
         type="text" placeholder="Title"
