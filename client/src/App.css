@@ -1,4 +1,5 @@
 #container {
+  height: auto;
 }
 
 #header-tag {
@@ -39,7 +40,7 @@
 
 #main-content {
   width: 80%;
-  height: 100vh;
+  height: auto;
   margin-left: 15px;
   border: black solid 1px;
 }
