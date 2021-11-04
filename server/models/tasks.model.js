@@ -6,11 +6,11 @@ const getAllTasks = async () => {
   return allTasks;
 };
 
-const createTask = async ({ title, message, creator, priority, status }) => {
+const createTask = async ({ title, message, author, priority, status }) => {
   const db = await connection();
-  const newTask = await db.collection('tasks').insertOne({ title, message, creator, priority, status, createdAt: Date.now() });
+  const newTask = await db.collection('tasks').insertOne({ title, message, author, priority, status, createdAt: Date.now() });
   console.log(newTask);
-  return { task: { _id: newTask.insertedId, title, message, creator, priority, status } };
+  return { task: { _id: newTask.insertedId, title, message, author, priority, status } };
 };
 
 module.exports = { getAllTasks, createTask };

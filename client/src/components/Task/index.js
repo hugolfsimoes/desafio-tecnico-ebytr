@@ -7,7 +7,7 @@ import yellowFlag from '../../images/yellowFlag.png';
 import moment from 'moment';
 
 export default function Task({ task }) {
-  const { title, message, creator, priority, status, createdAt } = task;
+  const { title, message, author, priority, status, createdAt } = task;
   let statusColor = '';
   if (status === 'Open') {
     statusColor = 'green';
@@ -18,7 +18,7 @@ export default function Task({ task }) {
     <div className="card-body">
       <ion-icon style={ { color: statusColor } } name="radio-button-on"></ion-icon>
       <h5 className="card-title">Title: { title }</h5>
-      <h6 className="card-subtitle mb-2 text-muted">Creator: { creator }</h6>
+      <h6 className="card-subtitle mb-2 text-muted">Author: { author }</h6>
       <p className="card-text">Message: { message }</p>
       {
         priority === 'High' && <p className="card-text">Priority:<img src={ redFlag } className="flag-icon" /></p>
@@ -30,8 +30,8 @@ export default function Task({ task }) {
         priority === 'Low' && <p className="card-text">Priority:<img src={ greenFlag } className="flag-icon" /></p>
       }
       <p id="created-tag" className="card-text">Created At: { moment(createdAt).fromNow() }</p>
-      <button type="button" className="btn btn-danger">Delete</button>
-      <button type="button" className="btn btn-warning">Edit</button>
+      <button type="submit" className="btn btn-danger">Delete</button>
+      <button type="submit" className="btn btn-warning">Edit</button>
     </div>
   );
 }
