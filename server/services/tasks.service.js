@@ -9,4 +9,11 @@ const createTask = async (payload) => {
   return newTask;
 };
 
-module.exports = { getAllTasks, createTask };
+const updateTask = async (_id, update) => {
+  console.log(update);
+  await TaskSchema.taskExists(_id);
+  const updatedTask = await TasksModel.updateTask(_id, update);
+  return updatedTask;
+};
+
+module.exports = { getAllTasks, createTask, updateTask };

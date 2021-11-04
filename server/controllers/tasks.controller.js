@@ -20,4 +20,16 @@ const createTask = async (req, res) => {
   }
 };
 
-module.exports = { getAllTasks, createTask };
+const updateTask = async (req, res) => {
+  const { id: _id } = req.params;
+  const update = req.body;
+  console.log(_id, update);
+  try {
+    const taskUpdate = await TasksService.updateTask(_id, update);
+    res.status(201).json(taskUpdate);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+
+};
+module.exports = { getAllTasks, createTask, updateTask };

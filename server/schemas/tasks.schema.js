@@ -1,3 +1,5 @@
+const taskModels = require('../models/tasks.model');
+
 const fildIsEmpty = ({ title, message, author, priority, status }) => {
   let error = '';
   switch (true) {
@@ -28,4 +30,13 @@ const fildIsEmpty = ({ title, message, author, priority, status }) => {
   }
 };
 
-module.exports = { fildIsEmpty };
+const taskExists = async (_id) => {
+  const task = await taskModels.findTaskById(_id);
+  if (!task) {
+    const error = new Error('task not found');
+    error.code = 404;
+    throw error;
+  }
+};
+
+module.exports = { fildIsEmpty, taskExists };
