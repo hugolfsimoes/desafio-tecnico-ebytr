@@ -8,7 +8,7 @@ const getAllTasks = async () => {
 
 const createTask = async ({ title, message, creator, priority, status }) => {
   const db = await connection();
-  const newTask = await db.collection('tasks').insertOne({ title, message, creator, priority, status });
+  const newTask = await db.collection('tasks').insertOne({ title, message, creator, priority, status, createdAt: Date.now() });
   console.log(newTask);
   return { task: { _id: newTask.insertedId, title, message, creator, priority, status } };
 };

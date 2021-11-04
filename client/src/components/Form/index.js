@@ -7,7 +7,7 @@ export default function Form() {
 
   const { change, setChange } = useContext(dataContext);
   const [taskData, setTaskData] = useState({
-    title: '', message: '', creator: '', priority: 'high', status: 'open'
+    title: '', message: '', creator: '', priority: 'High', status: 'Open'
   });
 
 
@@ -54,9 +54,9 @@ export default function Form() {
           id="input-priority"
           value={ taskData.priority }
           onChange={ (e) => setTaskData({ ...taskData, priority: e.target.value }) } >
-          <option value="high">High</option>
-          <option value="medium">Medium</option>
-          <option value="low">Low</option>
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
         </select>
       </label>
 
@@ -66,8 +66,8 @@ export default function Form() {
           id="input-status"
           value={ taskData.status }
           onChange={ (e) => setTaskData({ ...taskData, status: e.target.value }) } >
-          <option value="open">Open</option>
-          <option value="closed">Closed</option>
+          <option value="Open">Open</option>
+          <option value="Closed">Closed</option>
         </select>
       </label>
       <button type="submit">Submit</button>
