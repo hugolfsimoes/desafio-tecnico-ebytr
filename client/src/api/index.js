@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'https://des-tecnico-ebytr.herokuapp.com/tasks';
+const url = 'https://desafio-ebytr.herokuapp.com/tasks';
 
 export const fetchTasks = () => axios.get(url);
 export const createTask = (newTask) => axios.post(url, newTask);
