@@ -4,6 +4,7 @@ const cors = require('cors');
 require('dotenv').config();
 const tasksRoutes = require('./routes/tasks.route.js');
 const error = require('./middlewares/error');
+const TasksController = require('./controllers/tasks.controller');
 
 const app = express();
 
@@ -11,11 +12,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-
 app.use('/tasks', tasksRoutes);
-app.use('/', (req, res) => {
-  res.send('Hello');
-});
+console.log(process.env.MONGO_DB_URL);
+
+app.use('/', TasksController.getAllTasks);
 app.use(error);
 
 
