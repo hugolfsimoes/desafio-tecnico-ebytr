@@ -20,8 +20,10 @@ export default function Task({ task }) {
   }
 
   const handleEditTask = (task) => {
+
     setTaskEdit(task);
     setIsEditing(true);
+
   };
   return (
     <div className="card-body">
