@@ -1,13 +1,13 @@
 # Desafio Técnico Ebytr
 
-Este projeto é um desafio técnico para a empresa Ebytr, onde o objetivo é desenvolver um sistema de gerenciamento de tarefas de forma que deve ser possível vizualizar, inserir, deletar e editar as tarefas (CRUD).  
+Este projeto é um desafio técnico para a empresa Ebytr, onde o objetivo é desenvolver um sistema de gerenciamento de tarefas de forma que deve ser possível visualizar, inserir, deletar e editar as tarefas (CRUD).  
 
 
 # Linguagens, bibliotecas e ferramentas utilizadas .
 
-Front-End - ReactJS e Bootstrap.
-Back-End - NodeJs, mongoDB.
-Arquitetura - MSC.
+* Front-End - ReactJS e Bootstrap.
+* Back-End - NodeJs, mongoDB.
+* Arquitetura - MSC.
 
 # Acesso à aplicação
 
