@@ -23,7 +23,6 @@ const createTask = async (req, res) => {
 const updateTask = async (req, res) => {
   const { id: _id } = req.params;
   const update = req.body;
-  console.log(_id, update);
   try {
     const taskUpdate = await TasksService.updateTask(_id, update);
     res.status(201).json(taskUpdate);
@@ -32,4 +31,14 @@ const updateTask = async (req, res) => {
   }
 
 };
-module.exports = { getAllTasks, createTask, updateTask };
+
+const deleteTask = async (req, res) => {
+  const { id: _id } = req.params;
+  try {
+    const deletedTask = await TasksService.deleteTask(_id);
+    res.status(201).json(deletedTask);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
+module.exports = { getAllTasks, createTask, updateTask, deleteTask };

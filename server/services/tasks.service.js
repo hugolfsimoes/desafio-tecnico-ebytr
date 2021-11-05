@@ -16,4 +16,11 @@ const updateTask = async (_id, update) => {
   return updatedTask;
 };
 
-module.exports = { getAllTasks, createTask, updateTask };
+const deleteTask = async (_id) => {
+  await TaskSchema.taskExists(_id);
+  const deletedTask = await TasksModel.deleteTask(_id);
+  return deletedTask;
+};
+
+
+module.exports = { getAllTasks, createTask, updateTask, deleteTask };
