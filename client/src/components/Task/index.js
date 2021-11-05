@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import './style.css';
 import PropTypes from 'prop-types';
+import * as api from '../../api';
 import redFlag from '../../images/redFlag.png';
 import greenFlag from '../../images/greenFlag.png';
 import yellowFlag from '../../images/yellowFlag.png';
@@ -8,7 +9,7 @@ import moment from 'moment';
 import dataContext from '../../context/DataContext';
 
 export default function Task({ task }) {
-  const { setTaskEdit, setIsEditing } = useContext(dataContext);
+  const { change, setChange, setTaskEdit, setIsEditing } = useContext(dataContext);
   const { title, message, author, priority, status, createdAt } = task;
 
 
@@ -20,10 +21,15 @@ export default function Task({ task }) {
   }
 
   const handleEditTask = (task) => {
-
     setTaskEdit(task);
     setIsEditing(true);
+  };
 
+  const handleDeleteTask = async (id) => {
+    if (confirm('Do you really want to delete the task?')) {
+      await api.deleteTask(id);
+      setChange(!change);
+    }
   };
   return (
     <div className="card-body">
@@ -41,7 +47,7 @@ export default function Task({ task }) {
         priority === 'Low' && <p className="card-text">Priority:<img src={ greenFlag } className="flag-icon" /></p>
       }
       <p id="created-tag" className="card-text">Created At: { moment(createdAt).fromNow() }</p>
-      <button type="submit" className="btn btn-danger">Delete</button>
+      <button type="submit" className="btn btn-danger" onClick={ () => handleDeleteTask(task._id) }>Delete</button>
       <button type="submit" className="btn btn-warning" onClick={ () => handleEditTask(task) }>Edit</button>
     </div>
   );
