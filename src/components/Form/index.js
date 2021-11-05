@@ -88,6 +88,7 @@ export default function Form() {
           value={ taskData.status }
           onChange={ (e) => setTaskData({ ...taskData, status: e.target.value }) } >
           <option value="Open">Open</option>
+          <option value="Pending">Pending</option>
           <option value="Closed">Closed</option>
         </select>
       </label>
