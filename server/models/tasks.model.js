@@ -28,4 +28,11 @@ const updateTask = async (_id, update) => {
   return updatedTask.matchedCount === 1;
 };
 
-module.exports = { getAllTasks, createTask, findTaskById, updateTask };
+const deleteTask = async (_id) => {
+  const db = await connection();
+  const deletedTask = await db.collection('tasks').deleteOne({ _id: ObjectId(_id) });
+  console.log(deletedTask);
+  return deletedTask;
+};
+
+module.exports = { getAllTasks, createTask, findTaskById, updateTask, deleteTask };
