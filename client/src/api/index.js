@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/tasks';
+const url = 'https://des-tecnico-ebytr.herokuapp.com/tasks';
 
 export const fetchTasks = () => axios.get(url);
 export const createTask = (newTask) => axios.post(url, newTask);

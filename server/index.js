@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+require('dotenv').config();
 const tasksRoutes = require('./routes/tasks.route.js');
 const error = require('./middlewares/error');
 
@@ -10,7 +11,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
+
 app.use('/tasks', tasksRoutes);
+app.use('/', (req, res) => {
+  res.send('Hello');
+});
 app.use(error);
 
 
