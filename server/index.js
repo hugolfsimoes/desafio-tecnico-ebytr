@@ -13,7 +13,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use('/tasks', tasksRoutes);
-console.log(process.env.MONGO_DB_URL);
 
 app.use('/', TasksController.getAllTasks);
 app.use(error);
