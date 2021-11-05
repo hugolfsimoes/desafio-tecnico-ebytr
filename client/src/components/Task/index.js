@@ -16,8 +16,10 @@ export default function Task({ task }) {
   let statusColor = '';
   if (status === 'Open') {
     statusColor = 'green';
-  } else {
+  } else if (status === 'Closed') {
     statusColor = 'red';
+  } else {
+    statusColor = 'yellow';
   }
 
   const handleEditTask = (task) => {
