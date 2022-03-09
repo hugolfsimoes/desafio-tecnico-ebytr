@@ -1,6 +1,6 @@
-# Desafio Técnico Ebytr
+# Desafio Técnico Ebytr(Fictício)
 
-Este projeto é um desafio técnico para a empresa Ebytr, onde o objetivo é desenvolver um sistema de gerenciamento de tarefas de forma que deve ser possível visualizar, inserir, deletar e editar as tarefas (CRUD).  
+Este projeto é um desafio técnico fictício para a empresa Ebytr, onde o objetivo é desenvolver um sistema de gerenciamento de tarefas de forma que deve ser possível visualizar, inserir, deletar e editar as tarefas (CRUD).  
 
 
 # Linguagens, bibliotecas e ferramentas utilizadas .
